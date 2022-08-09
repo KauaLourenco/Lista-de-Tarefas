@@ -88,6 +88,11 @@ main.active {
     height: 100%;
     display: flex;
     flex-flow: row wrap;
+    gap: 2.5%;
+}
+
+#home-list li:last-child {
+    margin-bottom: 60px;
 }
 
 .list {
@@ -97,7 +102,7 @@ main.active {
 
 .list.active {
     width: 45%;
-    margin: 20px 30px;
+    margin: 20px 20px;
 }
 
 .list h2 {
@@ -135,7 +140,7 @@ main.active {
 }
 
 .task-name {
-    margin-left: 25px;
+    margin: 0 15px 0 25px;
 }
 
 /* Tasks checkbox and checkmark */
@@ -364,4 +369,34 @@ h3.checked {
     padding: 3px;
     background-color: var(--secondary-color);
     color: var(--text-color);
+}
+
+@media only screen and (max-width: 760px) {
+    header {
+        padding: 0;
+    }
+    #change-list {
+       display: none; 
+    }
+    #task-list {
+        width: 100%;
+    }
+    .list {
+        margin: 20px;
+    }
+}
+
+@media only screen and (min-width: 760px) and (max-width: 1000px) {
+    #task-list {
+        width: 100%;
+    }
+    #task-list.active {
+        gap: 1%;
+    }
+    .list {
+        margin: 20px 50px;
+    }
+    .list.active {
+        width: 44%;
+    }
 }
