@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* General */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-color: var(--secondary-color);
+}
+
+/* Change colors scheme and other variables changes */
+
+:root {
+    --primary-color: #25283D;
+    --secondary-color: white;
+    --terciary-color: #eee;
+    --text-color: black;
+    --border-color: black;
+    --checkmark-color: white;
+}
+
+:root.active {
+    --primary-color: rgb(48, 0, 179);
+    --secondary-color: black;
+    --terciary-color: #eee;
+    --text-color: rgb(230, 230, 230);
+    --border-color: white;
+    --checkmark-color: white;
+}
+
+/* Navigation bar */
+
+header {
+    width: 100%;
+    height: 4rem;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 10;
+}
+
+.logo,
+#nav-tools img {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+#nav-tools img:hover {
+    transform: scale(1.1);
+}
+
+/* Main and task list */
+
+main {
+    width: 100%;
+    height: calc(100vh - 4rem);
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+main.active {
+    justify-content: flex-start;
+}
+
+#task-list {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+#task-list.active {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.list {
+    margin: 20px 50px;
+    list-style: none;
+}
+
+.list.active {
+    width: 45%;
+    margin: 20px 30px;
+}
+
+.list h2 {
+    color: var(--text-color);
+}
+
+/* Tasks and task name */
+
+.task {
+    width: 100%;
+    height: fit-content;
+    margin: 10px 0;
+    padding: 5px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+    position: relative;
+    cursor: pointer;
+    list-style: none;
+}
+
+.task:hover {
+    transform: scale(1.01);
+    box-shadow: 2px 2px 4px 4px #eee;
+}
+
+.task.active:hover {
+    box-shadow: 2px 2px 2px 2px rgb(65, 65, 65);
+}
+
+.main-task-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+}
+
+.task-name {
+    margin-left: 25px;
+}
+
+/* Tasks checkbox and checkmark */
+
+.main-task-content input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+}
+
+.main-task-content input[type="checkbox"]:checked ~ .checkmark {
+    background-color: var(--primary-color);
+}
+
+.main-task-content input[type="checkbox"]:checked ~ .checkmark::after {
+    display: block;
+}
+
+.main-task-content input[type="checkbox"]:checked ~ .task-name {
+    text-decoration: line-through;
+}
+
+.main-task-content input[type="checkbox"]:checked ~ .description {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    background-color: var(--terciary-color);
+    border: 1px solid #ccc;
+    border-radius: 3px
+}
+
+.main-task-content:hover .checkmark {
+    background-color: #ccc;
+}
+
+.checkmark::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid var(--checkmark-color);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+h3.checked {
+    text-decoration: line-through;
+}
+
+/* Delete tasks button */
+
+.delete-task {
+    position: absolute;
+    top: 5px;
+    right: 2px;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.delete-task:hover {
+    transform: scale(1.3);
+    color: red;
+}
+
+/* Task description */
+
+.description {
+    display: block;
+    font-size: smaller;
+}
+
+/* Add task button */
+
+#add-task {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    font-size: 30px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#add-task:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+#add-task:active {
+    transform: scale(0.9);
+}
+
+/* Modal for task creation */
+
+#overlay {
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+}
+
+#task-form {
+    background-color: var(--secondary-color);
+    width: clamp(350px, 50%, 500px);
+    height: max-content;
+    position: fixed;
+    left: 50%;
+    top: -50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-top: 40px solid var(--primary-color);
+    transition: top 0.5s ease-in-out;
+    z-index: 1;
+    overflow: auto;
+}
+
+#task-form.active {
+    top: 50%;
+}
+
+#overlay.active {
+    display: block;
+}
+
+/* Close modal for task creation button */
+
+#close-task-creation {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 25px;
+    background-color: transparent;
+    color: var(--border-color);
+    border: none;
+    border-radius: 50%;
+    transition: .1s ease-in-out;
+    cursor: pointer;
+}
+
+#close-task-creation:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+#close-task-creation:active {
+    transform: scale(0.9);
+}
+
+/* Create task button */
+
+#create-task {
+    width: 50px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 7px;
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+#create-task:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+#create-task:active {
+    transform: scale(0.9);
+}
+
+/* Task forms */
+
+#name,
+#description {
+    width: 90%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+#name {
+    font-size: larger;
+}
+
+#description {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* List select */
+
+.choose-list {
+    margin-top: 20px;
+}
+
+#select {
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 3px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}

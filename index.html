@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Images/logo.png">
+
+    <title>Lista de tarefas</title>
+</head>
+
+<body>
+    <header>
+        <img src="images/logo.png" alt="logo" class="logo" title="Logo">
+        <nav>
+            <div id="nav-tools">
+                <img src="images/configMixer.png" alt="Alterar lista" id="change-list">
+                <img src="Images/light-theme.png" alt="Temas" id="change-theme">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="task-list">
+            <ul id="study-list" class="list">
+                <h2>Estudos:</h2>
+                <li class="task">
+                    <label class="main-task-content">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <p class="task-name">Assistir videoaulas sobre SQL.</p>
+                        <p class="description">Para reforçar os conhecimentos.</p>
+                    </label>
+                    <button class="delete-task">&times;</button>
+                </li>
+                <li class="task">
+                    <label class="main-task-content">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <p class="task-name">Estudar programação.</p>
+                        <p class="description">CSS, HTML e JavaScript.</p>
+                    </label>
+                    <button class="delete-task">&times;</button>
+                </li>
+                <li class="task">
+                    <label class="main-task-content">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <p class="task-name">Adicionar mais funções ao projeto da lista de tarefas.</p>
+                        <p class="description">Uma forma de editar as tarefas.</p>
+                    </label>
+                    <button class="delete-task">&times;</button>
+                </li>
+            </ul>
+
+            <ul id="work-list" class="list">
+                <h2>Trabalho:</h2>
+                <li class="task">
+                    <label class="main-task-content">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <p class="task-name">Terminar grande projeto até amanhã.</p>
+                        <p class="description"></p>
+                    </label>
+                    <button class="delete-task">&times;</button>
+                </li>
+                <li class="task">
+                    <label class="main-task-content">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <p class="task-name">Marcar reunião com a equipe para resolução de problemas.</p>
+                        <p class="description">Deve ser feita até a semana que vem.</p>
+                    </label>
+                    <button class="delete-task">&times;</button>
+                </li>
+            </ul>
+
+            <ul id="personal-list" class="list">
+                <h2>Pessoal:</h2>
+                <li class="task">
+                    <label class="main-task-content">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <p class="task-name">Organizar o calendário da semana que vem.</p>
+                        <p class="description">Preencher com os novos eventos.</p>
+                    </label>
+                    <button class="delete-task">&times;</button>
+                </li>
+                <li class="task">
+                    <label class="main-task-content">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <p class="task-name">Escolher um novo hábito para começar a praticar.</p>
+                        <p class="description">Leitura? Meditação? Caminhada?</p>
+                    </label>
+                    <button class="delete-task">&times;</button>
+                </li>
+            </ul>
+
+            <ul id="home-list" class="list">
+                <h2>Casa:</h2>
+                <li class="task">
+                    <label class="main-task-content">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <p class="task-name">Fazer compras.</p>
+                        <p class="description">Não esquecer de comprar os ovos outra vez!</p>
+                    </label>
+                    <button class="delete-task">&times;</button>
+                </li>
+                <li class="task">
+                    <label class="main-task-content">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <p class="task-name">Comprar a ração do cachorro.</p>
+                        <p class="description"></p>
+                    </label>
+                    <button class="delete-task">&times;</button>
+                </li>
+                <li class="task">
+                    <label class="main-task-content">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <p class="task-name">Faxina geral no quarto.</p>
+                        <p class="description">Lembre-se de tirar a poeira das prateleiras.</p>
+                    </label>
+                    <button class="delete-task">&times;</button>
+                </li>
+            </ul>
+            <button id="add-task">+</button>
+        </div>
+    </main>
+    <form id="task-form">
+        <input type="text" id="name" placeholder="Tarefa" autocomplete="off">
+        <input type="text" id="description" placeholder="Descrição" autocomplete="off">
+
+        <div class="choose-list">
+            <select id="select">
+                <option name="study" value="study">Estudos</option>
+                <option name="work" value="work">Trabalho</option>
+                <option name="personal" value="personal">Pessoal</option>
+                <option name="home" value="home">Casa</option>
+            </select>
+        </div>
+
+        <button type="button" id="close-task-creation">&times;</button>
+        <button type="button" id="create-task">Criar</button>
+    </form>
+
+    <div id="overlay"></div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
